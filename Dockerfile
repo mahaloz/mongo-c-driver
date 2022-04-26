@@ -17,12 +17,12 @@ RUN make -j3
 RUN make install
 WORKDIR /mongo/src/libbson/fuzz/
 RUN clang -fsanitize=fuzzer -I/usr/local/include/libbson-1.0 fuzz_test_libbson.c /usr/local/lib/libbson-1.0.so -o /fuzz_test_libbson
-WORKDIR /
-ENV LD_LIBRARY_PATH=/usr/local/lib/
 
-# # Package Stage
-# FROM --platform=linux/amd64 ubuntu:20.04
+# Package Stage
+FROM --platform=linux/amd64 ubuntu:20.04
+
+## TODO: Change <Path in Builder Stage>
+COPY --from=builder /usr/local/lib/libbson-1.0.so.0 /usr/local/lib
+COPY --from=builder /fuzz_test_libbson /fuzz_test_libbson
+ENV LD_LIBRARY_PATH=/usr/local/lib/
 # 
-# ## TODO: Change <Path in Builder Stage>
-# COPY --from=builder /lzbench/lzbench /
-# # 
