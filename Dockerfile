@@ -16,7 +16,7 @@ RUN cmake -DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF ..
 RUN make -j3
 RUN make install
 WORKDIR /mongo/src/libbson/fuzz/
-RUN clang -fsanitize=fuzzer -I/usr/local/include/libbson-1.0 fuzz_test_libbson.c /usr/local/lib/libbson-1.0.so -o /fuzz
+RUN clang -fsanitize=fuzzer -I/usr/local/include/libbson-1.0 fuzz_test_libbson.c /usr/local/lib/libbson-1.0.so -o /fuzz_test_libbson
 WORKDIR /
 ENV LD_LIBRARY_PATH=/usr/local/lib/
 

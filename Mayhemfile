@@ -6,4 +6,4 @@ target: mongo
 
 # List of commands used to test the target
 cmds:
-    - cmd: /fuzz
+    - cmd: /fuzz_test_libbson
