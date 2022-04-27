@@ -2,7 +2,7 @@
 project: mongo
 
 # Target name (should be unique within the project)
-target: mongo
+target: fuzz_test_libbson
 
 # List of commands used to test the target
 cmds:
